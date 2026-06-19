@@ -650,6 +650,12 @@ describe('custom providers', () => {
     expect(normalizeSettings({ agentMathFormattingPrompt: false }).agentMathFormattingPrompt).toBe(false)
   })
 
+  it('disables prompt rewrite allowance by default', () => {
+    expect(DEFAULT_SETTINGS.allowPromptRewrite).toBe(false)
+    expect(normalizeSettings({}).allowPromptRewrite).toBe(false)
+    expect(normalizeSettings({ allowPromptRewrite: true }).allowPromptRewrite).toBe(true)
+  })
+
   it('restores OpenAI-compatible URL after switching through fal.ai', () => {
     const openaiProfile = createDefaultOpenAIProfile({
       baseUrl: 'https://api.compat.example.com/v1',
